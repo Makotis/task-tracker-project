@@ -24,7 +24,7 @@ jobs:
     - name: Push Docker images
       run: |
         docker push task-tracker/task-tracker-project-backend:latest
-        docker push kintask-tracker/task-tracker-project-frontend:latest
+        docker push task-tracker/task-tracker-project-frontend:latest
 
     - name: Install SSH Key for Staging
       uses: webfactory/ssh-agent@v0.5.3
@@ -56,7 +56,7 @@ jobs:
         docker pull kingsleyzikora/frontend-app:latest
         docker stop backend frontend || true
         docker rm backend frontend || true
-        docker run -d --name backend --network zikora-net -p 3002:3000 kingsleyzikora/backend-app:latest 
-        docker run -d --name frontend --network zikora-net -p 8081:80 kingsleyzikora/frontend-app:latest 
+        docker run -d --name backend --my-network -p 3002:3000 kingsleyzikora/backend-app:latest 
+        docker run -d --name frontend --my-network -p 8081:80 kingsleyzikora/frontend-app:latest 
         docker system prune -af
         EOF
