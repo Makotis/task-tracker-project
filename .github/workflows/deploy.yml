@@ -23,8 +23,8 @@ jobs:
 
     - name: Push Docker images
       run: |
-        docker push task-tracker/task-tracker-project-backend:latest
-        docker push task-tracker/task-tracker-project-frontend:latest
+        docker push makotis/task-tracker-project-backend:latest
+        docker push makotis/task-tracker-project-frontend:latest
 
     - name: Install SSH Key for Staging
       uses: webfactory/ssh-agent@v0.5.3
